@@ -1,21 +1,40 @@
 package main
 
 import (
+	"github.com/gin-gonic/gin"
+	"github.com/siafei/gin-test/bootstrap"
+	"github.com/siafei/gin-test/global"
 	"github.com/siafei/gin-test/routers"
+	"log"
 	"net/http"
-	"time"
 )
 
+func init()  {
+	err := bootstrap.SetupSetting()  //引入配置文件
+	if err != nil {
+		log.Fatalf("init setupSetting err: %v",err)
+	}
+	err = bootstrap.SetupDBEngine()
+	if err != nil {
+		log.Fatalf("init DBEngine err: %v",err)
+	}
+}
+
+
 func main()  {
+	gin.SetMode(global.ServerSetting.RunModel)   //设置运行模式
 	router := routers.NewRouter()
 	s := &http.Server{
-		Addr: ":8080",
+		Addr: ":"+global.ServerSetting.HttpPort,
 		Handler: router,
-		ReadHeaderTimeout: 10*time.Second,
-		WriteTimeout: 10*time.Second,
+		ReadHeaderTimeout: global.ServerSetting.ReadTimeOut,
+		WriteTimeout: global.ServerSetting.WriteTimeOut,
 		MaxHeaderBytes: 1<<20,
 	}
 	s.ListenAndServe()
 }
+
+
+
 
 

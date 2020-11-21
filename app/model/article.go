@@ -9,6 +9,8 @@ type Article struct {
 	CreatedBy string `json:"created_by"`
 }
 
+
 func (m Article)TableName() string {
+	//Tabler 接口来更改默认表名
 	return "blog_article"
 }
