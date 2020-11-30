@@ -1,0 +1,2 @@
+2020/11/22 16:48:28 {"callers":["E:/goObj/gin-test/main.go:20 main.init.0"],"level":"info","message":"my name is aji","time":1606034908102876800}
+2020/11/22 16:48:35 {"callers":["E:/goObj/gin-test/main.go:20 main.init.0"],"level":"info","message":"my name is aji","time":1606034915699235200}

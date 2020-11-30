@@ -5,8 +5,7 @@ type Users struct {
 	NickName string `json:"nick_name"`
 	Username string `json:"username"`
 	Password string `json:"password"`
-	Status string `json:"status"`
-	CreatedBy string `json:"created_by"`
+	Status string `gorm:"default:1" json:"status"`
 }
 
 func (m Users)TableName() string {

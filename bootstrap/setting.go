@@ -1,9 +1,7 @@
 package bootstrap
 
 import (
-	"github.com/siafei/gin-test/global"
 	"github.com/spf13/viper"
-	"time"
 )
 
 type Setting struct {
@@ -21,30 +19,6 @@ func NewSetting() (*Setting,error)  {
 		return nil, err
 	}
 	return &Setting{vp},nil
-}
-
-//将配置赋值到全局变量中
-func SetupSetting() error  {
-	setting , err := NewSetting()
-	if err != nil {
-		return err
-	}
-	err = setting.ReadSection("Server",&global.ServerSetting)
-	if err != nil {
-		return err
-	}
-	err = setting.ReadSection("App",&global.AppSetting)
-	if err != nil {
-		return err
-	}
-	err = setting.ReadSection("Database",&global.DatabaseSetting)
-	if err != nil {
-		return err
-	}
-
-	global.ServerSetting.ReadTimeOut *= time.Second
-	global.ServerSetting.WriteTimeOut *= time.Second
-	return nil
 }
 
 func (s *Setting) ReadSection(k string,v interface{}) error  {

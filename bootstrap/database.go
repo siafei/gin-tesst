@@ -6,7 +6,9 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/siafei/gin-test/config"
 	"github.com/siafei/gin-test/global"
+	"time"
 )
+var  DBEngine *gorm.DB
 
 func NewDBEngine(databaseSetting *config.DatabaseSetting) (*gorm.DB,error)  {
 	db,err := gorm.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=%t&loc=Local",
@@ -26,16 +28,20 @@ func NewDBEngine(databaseSetting *config.DatabaseSetting) (*gorm.DB,error)  {
 		db.LogMode(true)
 	}
 	db.SingularTable(true)	//使用单数表名，启用该选项，此时，`User` 的表名应该是 `user`
+	db.Callback().Create().Replace("gorm:update_time_stamp",updateTimeStampForCreateCallback)
 	db.DB().SetMaxIdleConns(databaseSetting.MaxIdleConns)	//设置最大闲置数量
 	db.DB().SetMaxOpenConns(databaseSetting.MaxOpenConns)	//设置最大打开连接数
 	return db,nil
 }
 
-func SetupDBEngine() error {
-	var err error
-	global.DBEngine,err = NewDBEngine(global.DatabaseSetting)
-	if err != nil {
-		return err
+func updateTimeStampForCreateCallback(scope *gorm.Scope)  {
+	if !scope.HasError() {
+		nowTime := time.Now().Unix()
+		if createTimeField,ok := scope.FieldByName("CreatedOn");ok {
+			if createTimeField.IsBlank {
+				fmt.Print(nowTime)
+				_=createTimeField.Set(nowTime)
+			}
+		}
 	}
-	return nil
 }

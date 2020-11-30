@@ -34,3 +34,9 @@ type DatabaseSetting struct {
 	MaxIdleConns int
 	MaxOpenConns int
 }
+
+type JwtSetting struct {
+	Secret string
+	Issuer string
+	Express time.Duration
+}

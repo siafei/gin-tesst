@@ -2,6 +2,6 @@ package model
 
 type Model struct {
 	ID  uint32 `gorm:"primary_ke" json:"id"`
-	CreatedOn string `json:"created_on"`
-	DeleteOn string `json:"delete_on"`
+	CreatedOn uint32 `gorm:"default:NULl" json:"created_on"`
+	DeletedOn uint32 `gorm:"default:NUll" json:"deleted_on"`
 }

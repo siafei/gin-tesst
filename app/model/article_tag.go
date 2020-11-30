@@ -1,7 +1,7 @@
 package model
 
 type ArticleTag struct {
-	*Model
+	ID  uint32 `gorm:"primary_ke" json:"id"`
 	ArticleId uint32 `json:"article_id"`
 	TagId uint32	`json:"tag_id"`
 	Content string `json:"content"`
