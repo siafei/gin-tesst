@@ -1,14 +1,21 @@
 package main
 
 import (
-	"fmt"
+	"github.com/gin-gonic/gin"
 )
 
 
 
 
 func main()  {
-fmt.Println("hello world")
+	r:= gin.Default()
+	r.GET("/", func(context *gin.Context) {
+		context.JSON(200,gin.H{"message":"hello"})
+	})
+	r.GET("/error", func(context *gin.Context) {
+		panic("error")
+	})
+	r.Run()
 }
 
 
