@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1e6fde7-efbc-4626-aa9b-6fc982fc598c" name="默认变更列表" comment="">
-      <change afterPath="$PROJECT_DIR$/app/common/helper.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/config/Config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controller/test/TestController.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dao/TestDao.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/model/Model.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/model/test/TestModel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/service/Test/TestSetvice.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap/BootStrap.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/Config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,6 +42,11 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/model/test" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
