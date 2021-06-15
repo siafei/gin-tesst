@@ -238,10 +238,10 @@ func (session *Session) UnsafePush(data []byte) error {
 		return errNotConnected
 	}
 	return session.channel.Publish(
-		"test_direct",           // Exchange
-		session.name, // Routing key
-		false,        // Mandatory
-		false,        // Immediate
+		"test_direct", // Exchange
+		session.name,  // Routing key
+		false,         // Mandatory
+		false,         // Immediate
 		amqp.Publishing{
 			ContentType: "text/plain",
 			Body:        data,

@@ -1,0 +1,10 @@
+RabbitMq:
+  UserName : root
+  Password : 123654
+  Port : 5672
+  Addr : 114.215.139.30
+
+Server:
+  Port : 8080
+  ReadHeaderTimeout : 10
+  WriteTimeout : 10
