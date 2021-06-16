@@ -28,14 +28,14 @@ func InitConfig() {
 */
 func readSection() {
 	for key, val := range section {
-		vp.UnmarshalKey(key, val)
+		_ = vp.UnmarshalKey(key, val)
 	}
 }
 
 /**
 时间的配置另外初始化
- */
-func initTimeConf()  {
+*/
+func initTimeConf() {
 	ServerConf.ReadHeaderTimeout *= time.Second
 	ServerConf.WriteTimeout *= time.Second
 }
