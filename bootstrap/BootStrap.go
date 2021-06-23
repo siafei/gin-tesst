@@ -3,11 +3,15 @@ package bootstrap
 import (
 	"context"
 	"github.com/gin-gonic/gin"
+	"github.com/gomodule/redigo/redis"
+	"github.com/jinzhu/gorm"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
 	"siafei/gin-test/app/config"
+	"siafei/gin-test/internal/cache"
+	"siafei/gin-test/internal/db"
 	"siafei/gin-test/router"
 	"sync"
 	"time"
@@ -17,6 +21,11 @@ type App struct {
 	server *http.Server
 	group  sync.WaitGroup
 }
+
+var (
+	Db *gorm.DB
+	Redis *redis.Pool
+)
 
 func New() *App {
 	return &App{}
@@ -64,6 +73,14 @@ func (app *App) listen() {
 func (app *App) initConfig() {
 	//初始化 引入 配置文件
 	config.InitConfig()
+
+	//初始化数据库
+	conn,err := db.New()
+	if err != nil {
+		log.Fatal("Mysql Init err:", err)
+	}
+	Db = conn
+	Redis = cache.New()
 }
 
 func (app *App) initServer() {

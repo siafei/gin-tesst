@@ -38,4 +38,5 @@ func readSection() {
 func initTimeConf() {
 	ServerConf.ReadHeaderTimeout *= time.Second
 	ServerConf.WriteTimeout *= time.Second
+	Redis.IdleTimeout *= time.Second
 }

@@ -1,10 +1,32 @@
 RabbitMq:
-  UserName : root
-  Password : 123654
-  Port : 5672
-  Addr : 114.215.139.30
+  UserName: root
+  Password: 123654
+  Port: 5672
+  Addr: 114.215.139.30
 
 Server:
-  Port : 8080
-  ReadHeaderTimeout : 10
-  WriteTimeout : 10
+  RunMode: debug
+  Port: 8080
+  ReadHeaderTimeout: 10
+  WriteTimeout: 10
+
+Mysql:
+  DBType: mysql
+  Username: root  # 填写你的数据库账号
+  Password: 123654  # 填写你的数据库密码
+  Host: 114.215.139.30
+  Port: 3306
+  DBName: gin_test
+  Charset: utf8
+  ParseTime: True
+  MaxIdleConns: 10
+  MaxOpenConns: 30
+
+Redis:
+    Host: 114.215.139.30
+    Password: 4889212  # 填写你的数据库密码
+    Port: 6379
+    Index: 6  #用的db
+    MaxIdle: 3
+    MaxActive: 8
+    IdleTimeout: 240
