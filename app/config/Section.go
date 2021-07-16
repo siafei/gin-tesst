@@ -41,11 +41,23 @@ type redis struct {
 	IdleTimeout time.Duration
 }
 
+type mail struct {
+	MAIL_HOST string
+	MAIL_PORT string
+	MAIL_USERNAME string
+	MAIL_PASSWORD string
+	MAIL_FROM_ADDRESS string
+	MAIL_FROM_NAME string
+	MAIL_TO_ADDRESS string
+	MAIL_TO_NAME string
+}
+
 var (
 	RabbitMqConf *rabbitMq
 	ServerConf   *server
 	Mysql        *mysql
 	Redis		*redis
+	Mail		*mail
 )
 
 var section map[string]interface{}
@@ -56,4 +68,5 @@ func InitSection() {
 	section["RabbitMq"] = &RabbitMqConf
 	section["Mysql"] = &Mysql
 	section["Redis"] = &Redis
+	section["mail"]= &Mail
 }

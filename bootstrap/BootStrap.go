@@ -32,9 +32,8 @@ func New() *App {
 }
 
 func (app *App) Run() {
-	app.initConfig()
-
-	app.initServer()
+	app.initConfig()// 配置初始化
+	app.initServer()// 服务初始化
 	//服务启动
 	app.group.Add(1)
 	go app.start()

@@ -3,21 +3,30 @@ package rabbit
 import (
 	"github.com/streadway/amqp"
 	"log"
+	"sync"
 )
 
-type Rabbitmq struct {
-	name            string
-	logger          *log.Logger
-	connection      *amqp.Connection
-	channel         *amqp.Channel
-	done            chan bool
-	notifyConnClose chan *amqp.Error
-	notifyChanClose chan *amqp.Error
-	notifyConfirm   chan amqp.Confirmation
-	isReady         bool
+type Pool struct {
+	name   string
+	logger *log.Logger
+	cons   []*Conn
+	done   chan bool
+	mu 		sync.Mutex
+	notifyConfirm chan amqp.Confirmation
+	isReady       bool
 }
 
+type Conn struct {
+	con             *amqp.Connection
+	chans           []*Chan
+	notifyConnClose chan *amqp.Error
+}
 
-func New()  {
+type Chan struct {
+	channel         *amqp.Channel
+	notifyChanClose chan *amqp.Error
+}
+
+func New() {
 
 }
